@@ -62,7 +62,7 @@ class BancoDoNordeste extends BoletoAbstract
      * Define as carteiras disponíveis para este banco
      * @var array
      */
-    protected $carteiras = array('47','45','46','50','45','46','04','48','97','51','49','52','58','95','63','53','54','55','57','59','61');
+    protected $carteiras = array('21','47','45','46','50','45','46','04','48','97','51','49','52','58','95','63','53','54','55','57','59','61');
 
     /**
      * Gera o Nosso Número com o dígito verificador
@@ -72,7 +72,7 @@ class BancoDoNordeste extends BoletoAbstract
     protected function gerarNossoNumero()
     {
         $numero = static::zeroFill($this->sequencial, 7);
-        $resto = static::modulo11($numero, 8)['resto'];
+        $resto = static::modulo11($numero, 7)['resto'];  // correção para o DV do Nosso Número
         $dv = 0;
 
         if ($resto > 1) {
